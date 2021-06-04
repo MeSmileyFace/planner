@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+
+<main id="calendar">
+    <div id="calendar-container" class="container">
+        <div class="calendar">
+            <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                    <h1></h1>
+                    <h2></h2>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days">
+            </div>
+        </div>
+    </div>
+    <div id="papa-div">
+    <div id="task-list-container" hidden="true" class="container">
+
+    </div>
+    <div id="add-task-container" class="container">
+        <button id="add-task-button" hidden="true" class="btn-custom">Add task</button>
+    </div>
+        <div id="add-task-form-container" hidden="true">
+            <form id="add-task-form" action="/saveTask" method="post">
+                <div id="add-task-form-name" class="form-group">
+                    <input autocomplete="off" class="add-task-form-class form-control" name="name" placeholder="name" type="text">
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" class="add-task-form-class form-control" name="description" placeholder="description"
+                        type="text">
+                </div>
+                <div class="form-group">
+                    <input id="dueDate" class="add-task-form-class form-control" type="date" value="" max="25-07-2021" name="dueDate">
+                </div>
+                <!-- <input id="selectedDate" autocomplete="off" hidden="true" class="form-control" name="selectedDate"> -->
+                <button id="log-task-button" class="btn-custom" type="submit">Log Task</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+
+<script src="/static/calendarScript.js"></script>
+
+{% endblock %}

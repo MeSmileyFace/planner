@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Finished tasks
+{% endblock%}
+
+{% block main %}
+<table id="finished-tasks" class="table table-striped table-bordered">
+    <thead>
+        <th colspan="5">
+            <h3>Finished Tasks</h3>
+        </th>
+        <tr id="task-collumns">
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date Finished</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Days Before Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in finishedTasks %}
+        <tr id="task-cells">
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }} </td>
+            <td class="table-dates" type="Date">{{ task.finishDate | strftime }}</td>
+            <td class="table-dates" type="Date">{{ task.endDate | strftime }}</td>
+            <td> {{ task.daysUntilEnd}} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

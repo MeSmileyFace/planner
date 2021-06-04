@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block main %}
+<table id="task-table" class="table table-striped table-bordered">
+    <thead>
+        <th colspan="5">
+            <h3>Active Tasks</h3>
+        </th>
+        <tr id="task-collumns">
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Time Elapsed</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in activeTasks %}
+        <tr id="task-cells">
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }} </td>
+            <td type="Date">{{ task.startDate }} </td>
+            <td class="table-dates" type="Date">{{ task.endDate }}</td>
+            <td>
+                <!-- {% if task.finished %}
+                <div id="progressBar-{{task.id}}" class="progress-bar progress-bar bg-success" role="progressbar"
+                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100 %</div>
+                {% else %} -->
+                <div id="progressBar-{{task.id}}" class="progress-bar" role="progressbar"
+                    aria-valuenow="{{task.percentage}}" aria-valuemin="0" aria-valuemax="100">{{task.percentage}}%
+                    <script>
+                        if ({{ task.percentage }}<= 10) {
+                            $("#progressBar-{{task.id}}").width("12%")
+                            $("#progressBar-{{task.id}}").addClass("bg-success").css("border-radius", "4px")
+                        }
+                        else {
+                            if ({{ task.percentage }} < 25) {
+                            $("#progressBar-{{task.id}}").width("{{task.percentage}}%")
+                            $("#progressBar-{{task.id}}").addClass("bg-success").css("border-radius", "4px");
+                            }else if ({{ task.percentage }}> 25 && {{ task.percentage }}< 50) {
+                            $("#progressBar-{{task.id}}").width("{{task.percentage}}%")
+                            $("#progressBar-{{task.id}}").addClass("bg-info").css("border-radius", "4px");
+                            }else if ({{ task.percentage }}> 50 && {{ task.percentage }}< 75) {
+                            $("#progressBar-{{task.id}}").width("{{task.percentage}}%")
+                            $("#progressBar-{{task.id}}").addClass("bg-warning").css("border-radius", "4px");
+                            }else {
+                            $("#progressBar-{{task.id}}").width("{{task.percentage}}%")
+                            $("#progressBar-{{task.id}}").addClass("bg-danger").css("border-radius", "4px");}
+                        }
+                    </script>
+                </div>
+                <!-- {% endif %} -->
+            </td>
+            <!-- <td type="Date">{{ task.datefinished }}</td> -->
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<table id="overdue-tasks" class="table table-striped table-bordered">
+    <thead>
+        <th colspan="4">
+            <h3>Overdue Tasks</h3>
+        </th>
+        <tr id="task-collumns">
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in overdueTasks %}
+        <tr id="task-cells">
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }} </td>
+            <td type="Date">{{ task.startDate }} </td>
+            <td class="table-dates" type="Date">{{ task.endDate }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table id="overdue-tasks" class="table table-striped table-bordered">
+    <thead>
+        <th colspan="4">
+            <h3>Upcoming Tasks</h3>
+        </th>
+        <tr id="task-collumns">
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in upcomingTasks %}
+        <tr id="task-cells">
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }} </td>
+            <td type="Date">{{ task.startDate }} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
