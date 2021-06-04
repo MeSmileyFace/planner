@@ -10,7 +10,6 @@ $.ajax({
     contentType: 'application/json',
     data: JSON.stringify(dt),
     success: function (data, textStatus, jQxhr) {
-        console.log(data)
     },
     error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
@@ -76,7 +75,6 @@ const renderCalendar = () => {
     }
     monthDays.innerHTML = days;
 
-    console.log(document.querySelectorAll(".current-month"));
     document.querySelectorAll(".current-month").forEach(div => div.addEventListener("click", currentMonthListener));
 };
 
@@ -91,7 +89,6 @@ document.querySelector(".next").addEventListener("click", () => {
 });
 
 function addDeleteEventListener(e) {
-    console.log(e);
     let dt = {
         "taskId": e.target.name
     }
