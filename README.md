@@ -53,3 +53,5 @@ My project is a web application that allows you to log tasks via the calendar ta
 - The requires login decorator makes sure that any functions in the main app.py script that contain the decorator have to have the user logged in. 
 - Apology helper functions simply takes a message and a code and displays it on a page.
 - The striptime function strips the date to match the y-m-d format.
+
+made by me :)
